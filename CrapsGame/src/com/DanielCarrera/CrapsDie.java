@@ -1,12 +1,15 @@
 package com.danielcarrera;
 
+//
+// utility class for rolling and displaying die
+//
 public class CrapsDie {
 
     //
     // Displays the faces of two die rolls side by side
     // expects two roll values as ints
     //
-    public static void displayRoll(int roll1, int roll2) {
+    private static void displayRoll(int roll1, int roll2) {
         String topDice = " _______ ";
         String topDiceSides = "|       |";
         String[] faces = {"|       |",

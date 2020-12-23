@@ -2,12 +2,10 @@ package com.danielcarrera;
 
 public class Player {
 
-    private int wallet = 0;
+    private int wallet;
     private int point;
-
-    // win and loss variables are used by statistics module
-    private int numWins = 0;
-    private int numLosses = 0;
+    private int moneyWon;
+    private int moneyLost;
 
     //
     // Default constructor for player
@@ -19,24 +17,10 @@ public class Player {
 
     //
     // 2nd constructor for player
-    // sets the wallet amount to
+    // sets custom wallet amount
     //
     public Player(int money){
         wallet = money;
-    }
-
-    //
-    // if player wins, add money to wallet
-    //
-    public void won(int money){
-        wallet += money;
-    }
-
-    //
-    // if player loses, remove money from wallet
-    //
-    public void lost(int money){
-        wallet -= money;
     }
 
     //
@@ -61,32 +45,32 @@ public class Player {
     }
 
     //
-    // returns number of wins.
+    // if player wins, add money to wallet and total money won
+    // print win message and current bank roll
     //
-    public int getWins(){
-        return numWins;
+    public void won(int money, int diceSum){
+        wallet += money;
+        moneyWon += money;
+        System.out.println("Sum is: " + diceSum + ". You have won!");
+        System.out.println("Your new bank roll is: " + getWallet() + "$\n");
     }
 
     //
-    // returns number of losses.
+    // if player loses, remove money from wallet and add to total money lost
+    // print loss message and current bank roll
     //
-    public int getLosses(){
-        return numLosses;
+    public void lost(int money, int diceSum){
+        wallet -= money;
+        moneyLost += money;
+        System.out.println("Sum is: " + diceSum + ". You have lost!");
+        System.out.println("Your new bank roll is: " + getWallet() + "$\n");
     }
 
     //
-    // increments total wins by 1.
+    // return a player's profit
     //
-    public void addWin(){
-        numWins+= 1;
+    public void getProfit(){
+        System.out.println("Your profit is: " + (moneyWon - moneyLost) + "$!");
     }
-
-    //
-    // increments total losses by 1.
-    //
-    public void addLoss(){
-        numLosses += 1;
-    }
-
 
 }
